@@ -1,0 +1,58 @@
+<div class="container-fluid page__container">
+
+    <div #alertaGlobal *ngIf="mostrarMjeGlobal" class="alert alert-success" role="alert" autofocus>
+        {{mensajeGlobal}}
+    </div>
+
+    <div class="card-columns" *ngIf="producto">
+
+        <!--CARDS-->
+        <div class="card-columns">
+
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="card-title mb-0">
+                        <!--{{productos[0].nombre}}-->
+                        {{producto.nombre}}
+                    </h4>
+                </div>
+
+                <img src="{{imagen}}" class="img-size">
+
+                <div class="card-body ">
+                    <small class="text-muted "> <br> {{producto.descripcion}}<br></small>
+                    <hr> Suscripciones: <span class="badge badge-primary ">{{(producto.cantidadSuscripciones)/100 | percent}}</span>
+                </div>
+                <div>
+                    <button *ngIf="!producto.estaSuscripto" data-target="#modalSuscripcion" (click)="idProductoActual(producto, false)" data-toggle="modal" type="button " class="btn btn-outline-primary m-1 ">Suscribirme</button>
+                    <button *ngIf="producto.estaSuscripto" data-target="#modalSuscripcion" (click)="idProductoActual(producto, true)" data-toggle="modal" type="button " class="btn btn-outline-primary ">Desuscribirme</button>
+                </div>
+
+                <div class="modal fade" id="modalSuscripcion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Suscripciones</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>
+
+                            <div class="modal-body">
+                                {{mensaje}}
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="confirmar()">Confirmar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>

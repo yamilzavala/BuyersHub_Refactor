@@ -1,0 +1,115 @@
+@media screen and (min-width: 500px) {
+    .card-columns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card-columns .card {
+        display: inline-block;
+        margin-top: 1% !important;
+        width: 32.8%;
+        margin: 0.25%;
+        transition: .3s;
+    }
+}
+
+.margen-superior {
+    margin-top: 3%;
+}
+
+
+/* 
+.form-image-group {
+    position: relative
+}
+
+.form-image-group .form-check {
+    margin: 0
+}
+
+.form-image-group .form-check-inline .form-check-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0
+}
+
+.form-image-group label {
+    cursor: pointer;
+    margin: 0;
+    padding: 4px;
+    border: 1px solid #f0f1f2;
+    border-radius: .25rem
+}
+
+.form-image-group :checked~label {
+    padding: 2px;
+    border: 3px solid #2196f3
+}
+
+.is-valid .form-image-group :checked~label {
+    border-color: #66bb6a
+}
+
+.is-invalid .form-image-group label {
+    border-color: #f44336
+} */
+
+@media screen and (max-width: 1028px) {
+    .card-columns .card {
+        width: 100%;
+    }
+}
+
+
+/* ANIMACIONES */
+
+
+/* FADE IN */
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+
+/* FADE OUT */
+
+@-webkit-keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+}

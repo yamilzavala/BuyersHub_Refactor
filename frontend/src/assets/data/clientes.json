@@ -1,0 +1,18 @@
+{
+    "clientes": [{
+            "id": 1,
+            "nombre": "Yamil Zavala",
+            "tieneCuentasAsociadas": true
+        },
+        {
+            "id": 2,
+            "nombre": "Juan Moreno",
+            "tieneCuentasAsociadas": false
+        },
+        {
+            "id": 3,
+            "nombre": "Sofia Peralta",
+            "tieneCuentasAsociadas": true
+        }
+    ]
+}

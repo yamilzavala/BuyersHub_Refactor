@@ -1,0 +1,16 @@
+.carousel-inner {
+    height: 25vw;
+}
+
+@media screen and (min-width: 500px) {
+    .card-columns {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 3%;
+    }
+    .card-columns .card {
+        display: inline-block;
+        width: 30%;
+        margin: 0.8%;
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "productos": [{
+            "id": 1,
+            "nombre": "Auricular",
+            "categoria": "Audio",
+            "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque",
+            "imagen": "1",
+            "estaSuscripto": true
+        },
+
+        {
+            "id": 2,
+            "nombre": "Auricular Dos",
+            "categoria": "Audio",
+            "descripcion": "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo",
+            "imagen": "2",
+            "estaSuscripto": false
+        },
+
+        {
+            "id": 3,
+            "nombre": "Teclado",
+            "categoria": "Tecnologia",
+            "descripcion": " Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.",
+            "imagen": "3",
+            "estaSuscripto": true
+        },
+
+        {
+            "id": 4,
+            "nombre": "Reloj",
+            "categoria": "Otros",
+            "descripcion": " Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus",
+            "imagen": "4",
+            "estaSuscripto": false
+        },
+
+        {
+            "id": 5,
+            "nombre": "Reloj",
+            "categoria": "Otros",
+            "descripcion": " Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus",
+            "imagen": "4",
+            "estaSuscripto": false
+        }
+    ]
+}

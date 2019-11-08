@@ -1,0 +1,26 @@
+@media screen and (min-width: 500px) {
+    .card-columns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card-columns .card {
+        display: inline-block;
+        margin-top: 3% !important;
+        width: 100%;
+        transition: .3s;
+    }
+}
+
+.margen-superior {
+    margin-top: 3%;
+}
+
+@media screen and (max-width: 1028px) {
+    .card-columns .card {
+        width: 70%;
+    }
+}
+
+.img-size {
+    width: 100%;
+}
