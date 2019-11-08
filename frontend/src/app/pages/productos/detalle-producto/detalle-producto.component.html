@@ -1,8 +1,8 @@
 <div class="container-fluid page__container">
 
-    <div #alertaGlobal *ngIf="mostrarMjeGlobal" class="alert alert-success" role="alert" autofocus>
+    <!-- <div #alertaGlobal *ngIf="mostrarMjeGlobal" class="alert alert-success" role="alert" autofocus>
         {{mensajeGlobal}}
-    </div>
+    </div> -->
 
     <div class="card-columns" *ngIf="producto">
 
@@ -24,11 +24,11 @@
                     <hr> Suscripciones: <span class="badge badge-primary ">{{(producto.cantidadSuscripciones)/100 | percent}}</span>
                 </div>
                 <div>
-                    <button *ngIf="!producto.estaSuscripto" data-target="#modalSuscripcion" (click)="idProductoActual(producto, false)" data-toggle="modal" type="button " class="btn btn-outline-primary m-1 ">Suscribirme</button>
-                    <button *ngIf="producto.estaSuscripto" data-target="#modalSuscripcion" (click)="idProductoActual(producto, true)" data-toggle="modal" type="button " class="btn btn-outline-primary ">Desuscribirme</button>
+                    <button *ngIf="!producto.estaSuscripto" (click)="idProductoActual(producto, false)" type="button " class="btn btn-outline-primary m-1 ">Suscribirme</button>
+                    <button *ngIf="producto.estaSuscripto" (click)="idProductoActual(producto, true)" type="button " class="btn btn-outline-primary ">Desuscribirme</button>
                 </div>
 
-                <div class="modal fade" id="modalSuscripcion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <!-- <div class="modal fade" id="modalSuscripcion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
 
@@ -45,11 +45,11 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="confirmar()">Confirmar</button>
+                                <button type="button"  class="btn btn-primary" (click)="confirmar()">Confirmar</button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductoModel } from '../models/producto.model';
 import { ProductosService } from 'src/app/services/productos/productos.service';
 import { Route } from '@angular/router';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-add-product',
@@ -39,11 +40,12 @@ export class AddProductComponent implements OnInit {
     this._productService.agregarProducto(this.productoModel).subscribe(
       (res: any) => {
           if (!res.productoGuardado) {
-            this.mensajeGlobal = 'Error en el server';
+            //this.mensajeGlobal = 'Error en el server';
+            swal("Actualizacion!", 'Error en el serve', "error");
           }else{
               this.mensajeGlobal = res.message; 
               this.productoModel = res.productoGuardado;
-              this.mostrarAlerta();
+              swal("Informacion!", res.message, "success");
             //this._route.navigate(['/editar-prod'], res.product.id);
           }
           
@@ -56,16 +58,16 @@ export class AddProductComponent implements OnInit {
 
   //ALERTA
     // Alerta global
-    mostrarAlerta() {
-      setTimeout(() => {
-        this.claseMensaje = "alert alert-success fadeIn";
-        this.mostrarMjeGlobal = false;
-      }, 5000);
+    // mostrarAlerta() {
+    //   setTimeout(() => {
+    //     this.claseMensaje = "alert alert-success fadeIn";
+    //     this.mostrarMjeGlobal = false;
+    //   }, 5000);
   
-      this.mostrarMjeGlobal = true;
-      this.claseMensaje = "alert alert-success fadeIn";
-      window.scroll(0, 0);
-    }
+    //   this.mostrarMjeGlobal = true;
+    //   this.claseMensaje = "alert alert-success fadeIn";
+    //   window.scroll(0, 0);
+    // }
 
   //onSubmit(){
     //tomar los datos del formulario y crear un objeto producto       

@@ -1,9 +1,9 @@
 <div class="container-fluid page__container">
 
 
-    <div #alertaGlobal *ngIf="mostrarMjeGlobal" [ngClass]="claseMensaje" role="alert" autofocus>
+    <!-- <div #alertaGlobal *ngIf="mostrarMjeGlobal" [ngClass]="claseMensaje" role="alert" autofocus>
         {{mensajeGlobal}}
-    </div>
+    </div> -->
 
 
 
@@ -76,11 +76,17 @@
                 <span class="badge badge-primary ">{{productoItem.cantidadSuscripciones || '0'}} %</span>
             </div>
 
-            <button *ngIf="!productoItem.estaSuscripto" data-target="#modalSuscripcion" (click)="idProductoActual(productoItem, false)" data-toggle="modal" type="button " class="btn btn-outline-primary m-1 ">Suscribirme</button>
-            <button *ngIf="productoItem.estaSuscripto" data-target="#modalSuscripcion" (click)="idProductoActual(productoItem, true)" data-toggle="modal" type="button " class="btn btn-outline-primary ">Desuscribirme</button>
+            <button *ngIf="!productoItem.estaSuscripto" (click)="idProductoActual(productoItem, false)" type="button " class="btn btn-outline-primary m-1 ">Suscribirme</button>
+            <button *ngIf="productoItem.estaSuscripto" (click)="idProductoActual(productoItem, true)" type="button " class="btn btn-outline-primary ">Desuscribirme</button>
             <!-- <app-suscripciones></app-suscripciones> -->
 
-            <button data-target="#modalSuscripcion" data-toggle="modal" type="button" class="btn btn-outline-secondary m-1" style="margin-left: 20%;">
+            <!-- <button data-target="#modalSuscripcion" data-toggle="modal" type="button" class="btn btn-outline-secondary m-1" style="margin-left: 20%;">
+                <a _ngcontent-c3="" class="btn btn-white btn-sm" (click)="mostrarMjeEliminarConfirmar(productoItem) " >
+                    <i _ngcontent-c3="" class="mdi mdi-delete btn__icon--left">Eliminar</i>
+                </a>
+            </button> -->
+
+            <button class="btn btn-outline-primary m-1 ">
                 <a _ngcontent-c3="" class="btn btn-white btn-sm" (click)="mostrarMjeEliminarConfirmar(productoItem) " >
                     <i _ngcontent-c3="" class="mdi mdi-delete btn__icon--left">Eliminar</i>
                 </a>
@@ -99,7 +105,7 @@
             <!-- Start Page Modal -->
             <!-- ============================================================== -->
 
-            <div class="modal fade" id="modalSuscripcion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <!-- <div class="modal fade" id="modalSuscripcion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
 
@@ -120,7 +126,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
 

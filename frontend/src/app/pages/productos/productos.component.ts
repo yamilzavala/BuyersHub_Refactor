@@ -4,6 +4,7 @@ import { ProductosService } from 'src/app/services/productos/productos.service';
 import { Router, ActivatedRoute, Route, Params } from '@angular/router';
 
 import { DOCUMENT } from '@angular/platform-browser';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-productos',
@@ -34,7 +35,8 @@ export class ProductosComponent implements OnInit {
   mensaje: String;
   cantidadSuscripcionesProducto: number;
   
-  mensajeGlobal: String;
+  
+  mensajeGlobal: string;
   mostrarMjeGlobal: Boolean;
   claseMensaje: string = 'alert alert-success fadeOut';
   accion: number;
@@ -59,10 +61,16 @@ export class ProductosComponent implements OnInit {
       }
     
       this._productService.buscarPorTermino(termino)
-              .subscribe( (resProductosFiltrados: any[]) => {
-                  console.log(resProductosFiltrados);
-                  this.productos = resProductosFiltrados;
-                  this.validarImagen();
+              .subscribe( (resProductosFiltrados: any[]) => {                  
+                  this.productos = resProductosFiltrados;                  
+                  if (resProductosFiltrados.length === 0 ) {                    
+                    swal("Error!", "No se encontraron resultados", "error");  
+                    this.obtenerProductos();                 
+                  } 
+
+                    this.validarImagen();                    
+                  
+                  
                   
                   //console.log(resProductosFiltrados[0].imagen);
               });
@@ -71,11 +79,8 @@ export class ProductosComponent implements OnInit {
 
 
   obtenerProductos() {
-    console.log(this.totalRegistros);
-    console.log(this.desde);
       this._productService.getProductos(this.desde)
-      .subscribe( (res: any) => {
-        console.log('productos desde el componente: ', res);
+      .subscribe( (res: any) => {     
         this.totalRegistros = Number(this._productService.totalRegistros);
         this.productos = res;
         this.validarImagen();
@@ -103,7 +108,26 @@ export class ProductosComponent implements OnInit {
 
   mostrarMjeEliminarConfirmar(producto){
     this.accion = 2;
-    this.mensaje = 'Confirma que desea Eliminar el producto?';
+
+    swal({
+      title: "Alerta!",
+      text: "Confirma que desea borrar producto?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("El producto sera borrado!", {
+          icon: "success",
+        });
+        this.confirmar();
+      } else {
+        swal("El producto no sera borrarado!");
+      }
+    });
+
+    //this.mensaje = 'Confirma que desea Eliminar el producto?';
     this.idProducto = producto._id;
   }
 
@@ -111,7 +135,8 @@ export class ProductosComponent implements OnInit {
     console.log('this.idProducto: ',this.idProducto);
       this._productService.borrarProducto(this.idProducto)
           .subscribe( res => {
-            this.mensajeGlobal = 'Producto eliminado correctamente';
+            //this.mensajeGlobal = 'Producto eliminado correctamente';
+            swal("Informacion!", 'Producto eliminado correctamente', "success");
             console.log('Producto borrado correctamente: ', res);
             this.obtenerProductos();
           });
@@ -139,7 +164,8 @@ export class ProductosComponent implements OnInit {
   modificarProductos(id, body){
     this._productService.editarProducto(id, body)
         .subscribe( (res: any) => {
-          this.mensajeGlobal = res.message;
+          //this.mensajeGlobal = res.message;
+          swal("Informacion!", res.message, "success");
           this.obtenerProductos();
         });
   }
@@ -177,6 +203,24 @@ export class ProductosComponent implements OnInit {
                          }
 
     console.log(this.bodyProducto);
+
+    swal({
+      title: "Alerta!",
+      text: this.mensaje,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Se suscribira al producto seleccionado!", {
+          icon: "success",
+        });
+        this.confirmar();
+      } else {
+        swal("Accion cancelada!");
+      }
+    });
   }
 
   // confirmar suscripcion o desuscripcion (edicion) / eliminacion
@@ -184,24 +228,27 @@ export class ProductosComponent implements OnInit {
     switch(this.accion){
       case 1:
         this.modificarProductos(this.idProducto, this.bodyProducto);
+        this.mensaje = 'Edicion correcta';
         this.mostrarAlerta();
       break;
       case 2:
           this.eliminarProductos();
+          this.mensaje = 'Eliminacion correcta';
           this.mostrarAlerta();
     }        
   }
 
   // Alerta global
   mostrarAlerta() {
-    setTimeout(() => {
-      this.claseMensaje = "alert alert-success fadeIn";
-      this.mostrarMjeGlobal = false;
-    }, 5000);
+    // setTimeout(() => {
+    //   this.claseMensaje = "alert alert-success fadeIn";
+    //   this.mostrarMjeGlobal = false;
+    // }, 5000);
 
-    this.mostrarMjeGlobal = true;
-    this.claseMensaje = "alert alert-success fadeIn";
-    window.scroll(0, 0);
+    // this.mostrarMjeGlobal = true;
+    // this.claseMensaje = "alert alert-success fadeIn";
+    // window.scroll(0, 0);
+    swal("Informacion!", this.mensaje , "success");
   }
 
   //paginacion

@@ -75,12 +75,12 @@ export class DetalleProductoComponent implements OnInit {
 
     if (suscripto) {
       this.estaSuscripto = true;
-      this.mensaje = 'Confirma que desea Desuscribirse?';
+      this.mensaje = 'Se desuscribira al producto!';
       this.cantidadSuscripcionesProducto -= 10;
 
     } else {
       this.estaSuscripto = false;
-      this.mensaje = 'Confirma que desea Suscribirse?';
+      this.mensaje = 'Se suscribira al producto!';
       this.cantidadSuscripcionesProducto += 10;
     }
 
@@ -100,6 +100,24 @@ export class DetalleProductoComponent implements OnInit {
                          }
 
     console.log(this.bodyProducto);
+
+    swal({
+      title: "Alerta!",
+      text: this.mensaje,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Se suscribira al producto seleccionado!", {
+          icon: "success",
+        });
+        this.confirmar();
+      } else {
+        swal("Accion cancelada!");
+      }
+    });
   }
 
   // confirmar suscripcion o desuscripcion
@@ -110,11 +128,19 @@ export class DetalleProductoComponent implements OnInit {
 
   // Alerta global
   mostrarAlerta() {
-    setTimeout(() => {
-      this.mostrarMjeGlobal = false;
-    }, 5000);
+    // setTimeout(() => {
+    //   this.mostrarMjeGlobal = false;
+    // }, 5000);
 
-    this.mostrarMjeGlobal = true;
+    // this.mostrarMjeGlobal = true;
+    if (!this.estaSuscripto) {
+      swal("Informacion!", "Suscripcion exitosa" , "success");
+    }
+
+    if (this.estaSuscripto) {
+      swal("Informacion!", "Desuscripcion exitosa" , "success");
+    }
+    
   }
 
 }

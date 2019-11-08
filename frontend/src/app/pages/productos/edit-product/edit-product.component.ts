@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ProductosService } from 'src/app/services/productos/productos.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoModel } from '../models/producto.model';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-edit-product',
@@ -11,9 +12,9 @@ import { ProductoModel } from '../models/producto.model';
 export class EditProductComponent implements OnInit {
   @ViewChild('formProduct') formu: ElementRef;
 
-  mensajeGlobal: String;
-  mostrarMjeGlobal: Boolean;
-  claseMensaje: string = 'alert alert-success fadeOut';
+  // mensajeGlobal: String;
+  // mostrarMjeGlobal: Boolean;
+  // claseMensaje: string = 'alert alert-success fadeOut';
   idProducto;
 
   productoModel: ProductoModel;
@@ -57,13 +58,13 @@ editarProducto(){
       this._productService.editarProducto(this.idProducto, bodyProducto).subscribe(
       (res: any) => {
           if (!res.productUpdated) {
-            this.mensajeGlobal = 'Error en el server';
+            //this.mensajeGlobal = 'Error en el server';
+            swal("Actualizacion!", res.message, "error");
           }else{
-              this.mensajeGlobal = res.message; 
-              console.log('-----------------------------', res.message);
               this.productoModel = res.productUpdated;
               this.cargarProducto();
-              this.mostrarAlerta();
+              swal("Actualizacion!", res.message, "success");
+              //this.mostrarAlerta();
           }
           
       }, error => {
@@ -73,16 +74,5 @@ editarProducto(){
 }
 
 
-//ALERTA    
-mostrarAlerta() {
-setTimeout(() => {
-  this.claseMensaje = "alert alert-success fadeIn";
-  this.mostrarMjeGlobal = false;
-}, 5000);
-
-this.mostrarMjeGlobal = true;
-this.claseMensaje = "alert alert-success fadeIn";
-window.scroll(0, 0);
-}
 
 }
