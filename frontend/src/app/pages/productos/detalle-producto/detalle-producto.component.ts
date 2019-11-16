@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from 'src/app/services/productos/productos.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -101,23 +103,47 @@ export class DetalleProductoComponent implements OnInit {
 
     console.log(this.bodyProducto);
 
-    swal({
-      title: "Alerta!",
-      text: this.mensaje,
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        swal("Se suscribira al producto seleccionado!", {
-          icon: "success",
-        });
-        this.confirmar();
-      } else {
-        swal("Accion cancelada!");
-      }
-    });
+    // Swal({
+    //   title: "Alerta!",
+    //   text: this.mensaje,
+    //   icon: "warning",
+    //   buttons: ButtonList,
+    //   dangerMode: true,
+    // })
+    // .then((willDelete) => {
+    //   if (willDelete) {
+    //     swal("Se suscribira al producto seleccionado!", {
+    //       icon: "success",
+    //     });
+    //     this.confirmar();
+    //   } else {
+    //     swal("Accion cancelada!");
+    //   }
+    // });
+
+
+Swal.fire({
+  title: 'Estas seguro?',
+  text: "Se suscribira al producto seleccionado!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, Suscribirme!',
+  cancelButtonText: 'No, Cancelar'
+}).then((result) => {
+  if (result.value) {
+    Swal.fire(
+      'Suscripto!',
+      'Su suscripcion se ha realizado correctamente',
+      'success'
+    )
+    this.confirmar();
+  }
+})
+
+
+
   }
 
   // confirmar suscripcion o desuscripcion
@@ -134,13 +160,30 @@ export class DetalleProductoComponent implements OnInit {
 
     // this.mostrarMjeGlobal = true;
     if (!this.estaSuscripto) {
-      swal("Informacion!", "Suscripcion exitosa" , "success");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Suscripcion exitosa',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      //swal("Informacion!", "Suscripcion exitosa" , "success");
     }
 
     if (this.estaSuscripto) {
-      swal("Informacion!", "Desuscripcion exitosa" , "success");
+      if (!this.estaSuscripto) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Desuscripcion exitosa',
+          showConfirmButton: false,
+          timer: 1500
+        });
+     // swal("Informacion!", "Desuscripcion exitosa" , "success");
     }
     
   }
+
+}
 
 }

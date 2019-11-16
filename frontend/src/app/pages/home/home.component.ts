@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from 'src/app/services/productos/productos.service';
 import { ActivatedRoute } from '@angular/router';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -92,6 +92,26 @@ idProductoActual(producto, suscripto) {
                        }
 
   console.log(this.bodyProducto);
+
+  Swal.fire({
+    title: 'Esta seguro?',
+    text: this.mensaje,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, Confimar!',
+    cancelButtonText: 'No, Cancelar'
+  }).then((result) => {
+    if (result.value) {
+      Swal.fire(
+        'Atencion!',
+        'Accion ha realizadada correctamente',
+        'success'
+      )
+      this.confirmar();
+    }
+  })
 }
 
 // confirmar suscripcion o desuscripcion
@@ -102,11 +122,19 @@ confirmar() {
 
 // Alerta global
 mostrarAlerta() {
-  setTimeout(() => {
-    this.mostrarMjeGlobal = false;
-  }, 5000);
+//   setTimeout(() => {
+//     this.mostrarMjeGlobal = false;
+//   }, 5000);
 
-  this.mostrarMjeGlobal = true;
+//   this.mostrarMjeGlobal = true;
+// 
+
+Swal.fire({      
+  icon: 'success',
+  title: 'Accion realizadada correctamente',
+  showConfirmButton: false,
+  timer: 1500
+});
+
 }
-
 }

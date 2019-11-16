@@ -15,6 +15,7 @@ import { MisSuscripcionesComponent } from './mis-suscripciones/mis-suscripciones
 import { DetalleProductoComponent } from './productos/detalle-producto/detalle-producto.component';
 import { AddProductComponent } from './productos/add-product/add-product.component';
 import { EditProductComponent } from './productos/edit-product/edit-product.component';
+import { EnviosComponent } from './envios/envios.component';
 
 
 
@@ -37,6 +38,7 @@ const pagesRoutes: Routes = [
             // { path: 'detalleProducto', component: DetalleProductoComponent, data: { titulo: 'Detalle Producto' } },
             { path: 'perfil', component: PerfilComponent, data: { titulo: 'Perfil' } },
             { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Busqueda' } },
+            { path: 'envios', component: EnviosComponent, data: { titulo: 'Envios' } },
             { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },            
            // { path: 'account-settings', component: AccoutSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
             { path: '', redirectTo: '/home', pathMatch: 'full' }

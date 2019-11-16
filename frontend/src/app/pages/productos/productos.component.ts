@@ -4,7 +4,7 @@ import { ProductosService } from 'src/app/services/productos/productos.service';
 import { Router, ActivatedRoute, Route, Params } from '@angular/router';
 
 import { DOCUMENT } from '@angular/platform-browser';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos',
@@ -42,7 +42,12 @@ export class ProductosComponent implements OnInit {
   accion: number;
   
 
-  constructor(public _productService: ProductosService, private route: Router, private _routeNav: ActivatedRoute, @Inject(DOCUMENT) private document: Document) {
+  constructor(
+    public _productService: ProductosService, 
+    private route: Router, 
+    private _routeNav: ActivatedRoute, 
+    @Inject(DOCUMENT) private document: Document)
+     {
     
     // this.next_page = 1;
     // this.prev_page = 1;
@@ -63,8 +68,15 @@ export class ProductosComponent implements OnInit {
       this._productService.buscarPorTermino(termino)
               .subscribe( (resProductosFiltrados: any[]) => {                  
                   this.productos = resProductosFiltrados;                  
-                  if (resProductosFiltrados.length === 0 ) {                    
-                    swal("Error!", "No se encontraron resultados", "error");  
+                  if (resProductosFiltrados.length === 0 ) {         
+                    
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'No se encontraron resultados!'                      
+                    })
+                    
+                   // swal("Error!", "No se encontraron resultados", "error");  
                     this.obtenerProductos();                 
                   } 
 
@@ -109,23 +121,44 @@ export class ProductosComponent implements OnInit {
   mostrarMjeEliminarConfirmar(producto){
     this.accion = 2;
 
-    swal({
-      title: "Alerta!",
-      text: "Confirma que desea borrar producto?",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        swal("El producto sera borrado!", {
-          icon: "success",
-        });
-        this.confirmar();
-      } else {
-        swal("El producto no sera borrarado!");
-      }
-    });
+    // swal({
+    //   title: "Alerta!",
+    //   text: "Confirma que desea borrar producto?",
+    //   icon: "warning",
+    //   buttons: true,
+    //   dangerMode: true,
+    // })
+    // .then((willDelete) => {
+    //   if (willDelete) {
+    //     swal("El producto sera borrado!", {
+    //       icon: "success",
+    //     });
+    //     this.confirmar();
+    //   } else {
+    //     swal("El producto no sera borrarado!");
+    //   }
+    // });
+
+    
+Swal.fire({
+  title: 'Estas seguro?',
+  text: "Confirma que desea eliminar el producto?",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, Eliminar!',
+  cancelButtonText: 'No, Cancelar'
+}).then((result) => {
+  if (result.value) {
+    Swal.fire(
+      'Eliminacion!',
+      'El producto se ha eliminado correctamente',
+      'success'
+    )
+    this.confirmar();
+  }
+})
 
     //this.mensaje = 'Confirma que desea Eliminar el producto?';
     this.idProducto = producto._id;
@@ -136,7 +169,15 @@ export class ProductosComponent implements OnInit {
       this._productService.borrarProducto(this.idProducto)
           .subscribe( res => {
             //this.mensajeGlobal = 'Producto eliminado correctamente';
-            swal("Informacion!", 'Producto eliminado correctamente', "success");
+
+            Swal.fire({              
+              icon: 'success',
+              title: 'Producto eliminado correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            });
+
+            //swal("Informacion!", 'Producto eliminado correctamente', "success");
             console.log('Producto borrado correctamente: ', res);
             this.obtenerProductos();
           });
@@ -165,7 +206,16 @@ export class ProductosComponent implements OnInit {
     this._productService.editarProducto(id, body)
         .subscribe( (res: any) => {
           //this.mensajeGlobal = res.message;
-          swal("Informacion!", res.message, "success");
+          
+
+          Swal.fire({            
+            icon: 'success',
+            title: res.message,
+            showConfirmButton: false,
+            timer: 1500
+          });
+
+          //swal("Informacion!", res.message, "success");
           this.obtenerProductos();
         });
   }
@@ -204,24 +254,49 @@ export class ProductosComponent implements OnInit {
 
     console.log(this.bodyProducto);
 
-    swal({
-      title: "Alerta!",
+    // swal({
+    //   title: "Alerta!",
+    //   text: this.mensaje,
+    //   icon: "warning",
+    //   buttons: true,
+    //   dangerMode: true,
+    // })
+    // .then((willDelete) => {
+    //   if (willDelete) {
+    //     swal("Se suscribira al producto seleccionado!", {
+    //       icon: "success",
+    //     });
+    //     this.confirmar();
+    //   } else {
+    //     swal("Accion cancelada!");
+    //   }
+    // });
+
+
+    Swal.fire({
+      title: 'Esta seguro?',
       text: this.mensaje,
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        swal("Se suscribira al producto seleccionado!", {
-          icon: "success",
-        });
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Confimar!',
+      cancelButtonText: 'No, Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Atencion!',
+          'Accion realizadada correctamente',
+          'success'
+        )
         this.confirmar();
-      } else {
-        swal("Accion cancelada!");
       }
-    });
+    })
+    
+
+
   }
+
 
   // confirmar suscripcion o desuscripcion (edicion) / eliminacion
   confirmar() {
@@ -248,7 +323,15 @@ export class ProductosComponent implements OnInit {
     // this.mostrarMjeGlobal = true;
     // this.claseMensaje = "alert alert-success fadeIn";
     // window.scroll(0, 0);
-    swal("Informacion!", this.mensaje , "success");
+   
+    Swal.fire({      
+      icon: 'success',
+      title: this.mensaje,
+      showConfirmButton: false,
+      timer: 1500
+    });
+   
+    //swal("Informacion!", this.mensaje , "success");
   }
 
   //paginacion

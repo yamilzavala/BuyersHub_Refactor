@@ -11,6 +11,7 @@ export class SidebarService {
         { titulo: 'Inicio', url: '/home' },
         { titulo: 'Mis Suscripciones', url: '/suscripciones' },
         { titulo: 'Productos', url: '/producto' },
+        { titulo: 'Envios', url: '/envios' }
         // { titulo : 'Suscripciones', url: '/progress' },        
       ]
     },
@@ -20,7 +21,8 @@ export class SidebarService {
       submenu: [
         {titulo: 'Clientes', url: 'clientes'},
         {titulo: 'Proveedores', url: 'proveedores'},
-        {titulo: 'Productos', url: '/agregar-producto'}
+        {titulo: 'Productos', url: '/agregar-producto'},
+        { titulo: 'Envios', url: '/envios' }
       ]
 
     }

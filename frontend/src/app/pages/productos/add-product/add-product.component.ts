@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductoModel } from '../models/producto.model';
 import { ProductosService } from 'src/app/services/productos/productos.service';
 import { Route } from '@angular/router';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-product',
@@ -41,11 +41,24 @@ export class AddProductComponent implements OnInit {
       (res: any) => {
           if (!res.productoGuardado) {
             //this.mensajeGlobal = 'Error en el server';
-            swal("Actualizacion!", 'Error en el serve', "error");
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Error en el server!'
+            })
+
+           // swal("Actualizacion!", 'Error en el serve', "error");
           }else{
               this.mensajeGlobal = res.message; 
               this.productoModel = res.productoGuardado;
-              swal("Informacion!", res.message, "success");
+              Swal.fire({                
+                icon: 'success',
+                title: res.message,
+                showConfirmButton: false,
+                timer: 1500
+              });
+              //swal("Informacion!", res.message, "success");
             //this._route.navigate(['/editar-prod'], res.product.id);
           }
           

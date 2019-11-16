@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ProductosService } from 'src/app/services/productos/productos.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoModel } from '../models/producto.model';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-product',
@@ -59,11 +59,22 @@ editarProducto(){
       (res: any) => {
           if (!res.productUpdated) {
             //this.mensajeGlobal = 'Error en el server';
-            swal("Actualizacion!", res.message, "error");
+            Swal.fire({
+              icon: 'error',
+              title: 'Actualizacion',
+              text: res.message
+            })
+            //swal("Actualizacion!", res.message, "error");
           }else{
               this.productoModel = res.productUpdated;
               this.cargarProducto();
-              swal("Actualizacion!", res.message, "success");
+              Swal.fire({
+                icon: 'success',
+                title: res.message,
+                showConfirmButton: false,
+                timer: 1500
+              });
+             // swal("Actualizacion!", res.message, "success");
               //this.mostrarAlerta();
           }
           

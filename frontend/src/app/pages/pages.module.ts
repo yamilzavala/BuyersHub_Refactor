@@ -34,6 +34,7 @@ import { DetalleProductoComponent } from './productos/detalle-producto/detalle-p
 import { ModalComponent } from './modal/modal.component';
 import { AddProductComponent } from './productos/add-product/add-product.component';
 import { EditProductComponent } from './productos/edit-product/edit-product.component';
+import { EnviosComponent } from './envios/envios.component';
 
 
 
@@ -56,7 +57,8 @@ import { EditProductComponent } from './productos/edit-product/edit-product.comp
         DetalleProductoComponent,
         ModalComponent,
         AddProductComponent,
-        EditProductComponent
+        EditProductComponent,
+        EnviosComponent
     ],
     exports: [
         HomeComponent
