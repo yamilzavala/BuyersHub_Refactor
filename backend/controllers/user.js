@@ -84,14 +84,33 @@ function userLogin(req, res) {
             }
         }
     });
+}
 
 
+function actualizarUser(req, res) {
+    var idUser = req.params.id;
+    var update = req.body;
 
+    User.findByIdAndUpdate(idUser, update, (err, userUpdated) => {
+        if (err) {
+            res.status(500).send({ message: 'Error al actualizar usuario' });
+        } else {
+            if (!userUpdated) {
+                res.status(404).send({ message: 'No se ha podido actualizar usuario' });
+            } else {
+                res.status(200).send({
+                    message: 'Usaurio actualizado',
+                    userUpdated
+                });
+            }
+        }
+    });
 }
 
 
 module.exports = {
     testUser,
     saveUser,
-    userLogin
+    userLogin,
+    actualizarUser
 }
