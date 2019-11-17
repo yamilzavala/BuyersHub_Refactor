@@ -15,11 +15,7 @@ function saveUser(req, res) {
     // Obtener data del body
     var params = req.body;
 
-    console.log(params);
-
     userMapper(user, params);
-
-    console.log(user.password);
 
     if (user.email != null && user.password != null) {
         user.save((err, useroGuardado) => {
@@ -53,9 +49,45 @@ function userMapper(user, params) {
     user.imagen = params.imagen ? params.imagen : 'Sin imagen';
 }
 
+function userLogin(req, res) {
+    var params = req.body;
+    var emailUser = params.email;
+    var passwordUser = params.password;
+
+    User.findOne({ email: emailUser.toLowerCase() }, (err, user) => {
+        if (err) {
+            res.status(500).send({ message: 'Error en el logueo del user' });
+        } else {
+            if (!user) {
+                res.status(404).send({ message: 'Usuario no encontrado' });
+            } else {
+                //comprobamos contraseña
+                bcrypt.compare(passwordUser, user.password, (err, check) => {
+                    if (check) {
+                        //devolver datos de usuario logueado
+                        if (params.gethash) {
+                            //devolver token jwt
+                        } else {
+                            res.status(200).send({
+                                message: 'Usuario encontrado',
+                                user
+                            });
+                        }
+                    } else {
+                        res.status(404).send({ message: 'Password invalido, usuario no ha podido loguearse' });
+                    }
+                });
+            }
+        }
+    });
+
+
+
+}
 
 
 module.exports = {
     testUser,
-    saveUser
+    saveUser,
+    userLogin
 }

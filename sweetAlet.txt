@@ -1,0 +1,73 @@
+
+-----------------VIEJO-------------------------
+
+import swal from 'sweetalert';
+
+swal("Actualizacion!", res.message, "success");
+swal("Actualizacion!", res.message, "error");
+
+
+
+swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    swal("Poof! Your imaginary file has been deleted!", {
+      icon: "success",
+    });
+  } else {
+    swal("Your imaginary file is safe!");
+  }
+});
+
+---------------------NUEVO---------------------------
+
+import Swal from 'sweetalert2';
+
+
+
+Swal.fire({
+  title: 'Estas seguro?',
+  text: "Se suscribira al producto seleccionado!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Si, Suscribirme!',
+  cancelButtonText: 'No, Cancelar'
+}).then((result) => {
+  if (result.value) {
+    Swal.fire(
+      'Suscripto!',
+      'Su suscripcion se ha realizado correctamente',
+      'success'
+    )
+    this.confirmar();
+  }
+})
+
+
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Desuscripcion exitosa',
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+
+Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Something went wrong!'
+})
+
+---------CORRECCION--------------
+
+https://github.com/sweetalert2/sweetalert2/issues/1773

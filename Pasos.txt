@@ -3,8 +3,15 @@
 > Instalar tanto en "frontend" como en "backend" modulos de node con comando: "npm install"
 > Ejecutar mongod.exe
 > Ejecutar mongo.exe
-> Importar base de datos de productos ejecutando
-	mongoimport -d suscripciones_db -c productos --file productos_collection.json
+> Importar base de datos de productos:
+	*Copiar el archivo productos_collection.json a la carpeta:
+		C:\Program Files\MongoDB\Server\4.2\bin
+
+	*Abir un cmd
+
+	*Ejecutar:
+		mongoimport --db suscripciones_db --collection productos --file productos_collection.json 
+
 > Levantar backend con comando "npm start"
 > Levantar frontend con comando "ng s"
 > Abrir el navegador e ingresar a url: http://localhost:4200
