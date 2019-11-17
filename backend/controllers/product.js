@@ -182,6 +182,7 @@ function updateProducto(req, res) {
             if (!productUpdated) {
                 res.status(404).send({ message: 'No se encontro el producto a actualizar' });
             } else {
+                //envio de email de notificacion
                 emailManager.enviar();
                 res.status(200).send({
                     message: 'Producto actualizado correctamente',
@@ -209,6 +210,7 @@ function eliminarProducto(req, res) {
             if (!productDeleted) {
                 res.status(404).send({ message: 'No se encontro el producto a eliminar' });
             } else {
+                //envio de email de notificacion
                 emailManager.enviar();
                 res.status(200).send(productDeleted);
             }
