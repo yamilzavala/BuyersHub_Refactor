@@ -9,6 +9,8 @@ import {map} from 'rxjs/operators';
 })
 export class UserService {
   public url: string;
+  public identity;
+  public token;
 
   constructor( private _http: HttpClient ) {
     this.url = URL_SERVICIOS;
@@ -28,4 +30,25 @@ export class UserService {
                     //   map((res:any) =>  res.json())
                     // );
    }
+
+
+   getIdenity(){
+    let identyLocal = JSON.parse(localStorage.getItem('identity'));
+    if (identyLocal !== undefined) {
+        this.identity = identyLocal;
+    } else {
+        this.identity = null;
+    }
+    return this.identity;
+  }
+
+  getToken(){
+    let tokenLocal = localStorage.getItem('token');
+    if (tokenLocal !== undefined) {
+        this.token = tokenLocal;
+    } else {
+        this.token = null;
+    }
+    return this.token;
+  }
 }

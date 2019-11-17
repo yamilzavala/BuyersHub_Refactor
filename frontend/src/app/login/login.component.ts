@@ -26,13 +26,59 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     init_plugins();
+    this.token = this._userService.getToken();
+    this.identity = this._userService.getIdenity();
+    console.log(this.token);
+    this.validarToken();
+  }
+
+  validarToken(){
+    if (this.token !== null) {
+      this.router.navigate([ '/home' ]);
+    } 
   }
 
   ingresar() {    
-    //this.router.navigate([ '/home' ]);
+    //Conseguir datos de usuario identificado
     this._userService.signUp(this.usuario)
-            .subscribe( res => {
+            .subscribe( (res:any) => {
               console.log(res);
+              let identifyLocal = res.user;
+              this.identity = identifyLocal;
+
+              if (!this.identity._id) {
+
+                this.mostrarMjeError('El usuario no esta correctamente identificado')
+              } else {
+                    //grabamos los datos del user en el ls
+                    localStorage.setItem('identity', JSON.stringify(this.identity));
+
+                    //Conseguir token para ser enviado a cada peticion
+                    this._userService.signUp(this.usuario, 'true')
+                                  .subscribe( (responseToken:any) => {
+                                    console.log(responseToken);
+                                    this.token = responseToken.token;
+                      
+                                              if (this.token.length <= 0) {
+                                                this.mostrarMjeError('El token no se ha generado')
+                                              } else {
+                                                //grabamos los datos del token en el ls                                
+                                                console.log(this.identity);
+                                                console.log(this.token);
+                                                localStorage.setItem('token', this.token);
+                                              }    
+                                              
+                                              this.validarToken();
+                                  }, 
+                                  error => {     
+                                    this.erroMje = <any>error;
+                                    if (this.erroMje != null) {
+                                      console.log(error);   
+                                      this.mostrarMjeError(this.erroMje.error.message);
+                                    }                                  
+                                  } ); 
+                }
+
             }, 
             error => {     
               this.erroMje = <any>error;
@@ -40,7 +86,8 @@ export class LoginComponent implements OnInit {
                 console.log(error);   
                 this.mostrarMjeError(this.erroMje.error.message);
               }                                  
-            } ); 
+            
+          }); 
   }
 
   mostrarMjeError(mje){
