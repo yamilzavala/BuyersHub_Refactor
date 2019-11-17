@@ -1,5 +1,6 @@
 // Importaciones
 const Producto = require('../models/product');
+const emailManager = require('../handlers/email');
 //var mongoosePaginate = require('mongoose-paginate');
 
 //Logica de negocio
@@ -181,6 +182,7 @@ function updateProducto(req, res) {
             if (!productUpdated) {
                 res.status(404).send({ message: 'No se encontro el producto a actualizar' });
             } else {
+                emailManager.enviar();
                 res.status(200).send({
                     message: 'Producto actualizado correctamente',
                     productUpdated
@@ -189,7 +191,11 @@ function updateProducto(req, res) {
         }
 
     });
+
+
+
 }
+
 
 
 function eliminarProducto(req, res) {
@@ -203,6 +209,7 @@ function eliminarProducto(req, res) {
             if (!productDeleted) {
                 res.status(404).send({ message: 'No se encontro el producto a eliminar' });
             } else {
+                emailManager.enviar();
                 res.status(200).send(productDeleted);
             }
         }
@@ -221,6 +228,9 @@ function productMapper(product, params) {
     product.estaSuscripto = params.estaSuscripto ? params.estaSuscripto : 'false';
     product.cantidadSuscripciones = params.cantidadSuscripciones ? params.cantidadSuscripciones : 0;
 }
+
+
+
 
 
 

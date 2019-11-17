@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var app = require('./app');
 var port = process.env.PORT || 3000;
 
+//var emailConfig = require('./handlers/email');
 
 mongoose.connect('mongodb://localhost:27017/suscripciones_db', (err, res) => {
     if (err) throw err;

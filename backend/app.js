@@ -16,6 +16,7 @@ app.use(function(req, res, next) {
 
 // Cargar rutas
 var product_routes = require('./routes/product');
+var user_routes = require('./routes/user');
 
 // Configurar body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 
 // Declaracion rutas
 app.use('/api/products', product_routes);
-
+app.use('/api/users', user_routes);
 
 
 
