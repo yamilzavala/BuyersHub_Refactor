@@ -1,5 +1,6 @@
 var bcrypt = require('bcrypt');
 var User = require('../models/user');
+var jwt = require('../services/jwt');
 
 
 function testUser(req, res) {
@@ -67,6 +68,9 @@ function userLogin(req, res) {
                         //devolver datos de usuario logueado
                         if (params.gethash) {
                             //devolver token jwt
+                            res.status(200).send({
+                                token: jwt.createToken(user)
+                            });
                         } else {
                             res.status(200).send({
                                 message: 'Usuario encontrado',
