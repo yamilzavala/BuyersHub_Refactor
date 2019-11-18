@@ -14,11 +14,12 @@ export class SidebarComponent implements OnInit {
                public router: Router ) { }
 
   ngOnInit() {
+    this._sidebar.inicializarMenuPorRol();
   }
 
   cerrarSesion(){
     localStorage.removeItem('token');
-    localStorage.removeItem('identify');
+    localStorage.removeItem('identity');
     this.router.navigate([ '/login' ]);
   }
 
