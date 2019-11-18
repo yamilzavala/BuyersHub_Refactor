@@ -86,13 +86,13 @@
                 </a>
             </button> -->
 
-            <button class="btn btn-outline-primary m-1 ">
+            <button *ngIf="userRole=='Admin_Role'" class="btn btn-outline-primary m-1 ">
                 <a _ngcontent-c3="" class="btn btn-white btn-sm" (click)="mostrarMjeEliminarConfirmar(productoItem) " >
                     <i _ngcontent-c3="" class="mdi mdi-delete btn__icon--left">Eliminar</i>
                 </a>
             </button>
 
-            <button type="button" class="btn btn-outline-secondary m-1" style="margin-left: 5%;">
+            <button *ngIf="userRole=='Admin_Role'" type="button" class="btn btn-outline-secondary m-1" style="margin-left: 5%;">
             <a _ngcontent-c3="" [routerLink]="['/editarProducto',productoItem._id]" class="btn btn-white btn-sm" >
                 <i _ngcontent-c3="" class="mdi mdi-pencil btn__icon--left">Editar</i>
             </a>

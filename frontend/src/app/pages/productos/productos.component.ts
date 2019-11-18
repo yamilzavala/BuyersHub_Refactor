@@ -41,6 +41,8 @@ export class ProductosComponent implements OnInit {
   claseMensaje: string = 'alert alert-success fadeOut';
   accion: number;
   
+  userLogin;
+  userRole;
 
   constructor(
     public _productService: ProductosService, 
@@ -55,6 +57,8 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerProductos();
+    this.userLogin = JSON.parse(localStorage.getItem('identity'));
+    this.userRole = this.userLogin.role;
   }
 
 
