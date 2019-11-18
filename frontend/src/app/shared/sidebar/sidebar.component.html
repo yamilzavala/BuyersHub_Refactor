@@ -10,8 +10,10 @@
 
                 <!-- PERFIL-->
                 <li class="user-profile">
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img src="../assets/images/users/21.jpg" alt="user" />
-                        <span class="hide-menu">Yamil Zavala </span></a>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <img src="../assets/images/users/21.jpg" alt="user" />
+                        <span class="hide-menu">{{this._sidebar.userLogin.nombre}} {{this._sidebar.userLogin.apellido}} </span>
+                    </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a routerLink="/perfil">Mi Perfil </a></li>
                         <!-- <li><a routerLinkActive="active" routerLink="/account-settings">Account Setting</a></li> -->

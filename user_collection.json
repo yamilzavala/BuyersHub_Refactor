@@ -1,0 +1,19 @@
+		{
+            "nombre": "Name_User_1",
+            "apellido": "last_Name_User_1",
+            "email": "emailuser@gmail.com",
+            "password": "123456",
+            "role": "User_Role",
+			"imagen" : "1"
+        }
+		{
+            "nombre": "Name_User_2",
+            "apellido": "last_Name_User_2",
+            "email": "admin@gmail.com",
+            "password": "3456789",
+            "role": "Admin_Role",
+			"imagen" : "2"
+        }
+
+        
+    

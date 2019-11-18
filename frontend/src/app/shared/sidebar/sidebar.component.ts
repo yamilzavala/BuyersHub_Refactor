@@ -9,12 +9,14 @@ import { Router } from '@angular/router';
   styles: []
 })
 export class SidebarComponent implements OnInit {
+  
 
   constructor( public _sidebar: SidebarService,
                public router: Router ) { }
 
   ngOnInit() {
-    this._sidebar.inicializarMenuPorRol();
+    this._sidebar.inicializarMenuPorRol();    
+    
   }
 
   cerrarSesion(){
@@ -22,5 +24,7 @@ export class SidebarComponent implements OnInit {
     localStorage.removeItem('identity');
     this.router.navigate([ '/login' ]);
   }
+
+ 
 
 }

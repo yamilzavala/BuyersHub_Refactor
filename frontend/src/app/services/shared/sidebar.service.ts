@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class SidebarService {
 
-  private userLogin;
-  private userRole;
+  public userLogin;
+  public userRole;
 
   menu: any;
 

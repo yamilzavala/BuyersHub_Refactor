@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor( public router: Router,
                private _userService: UserService) {
-    this.usuario = new UsuarioModel('','','','','');
+    this.usuario = new UsuarioModel('','','','','','');
    }
 
   ngOnInit() {
@@ -46,9 +46,8 @@ export class LoginComponent implements OnInit {
               let identifyLocal = res.user;
               this.identity = identifyLocal;
 
-              if (!this.identity._id) {
-
-                this.mostrarMjeError('El usuario no esta correctamente identificado')
+              if (!identifyLocal._id) {
+                this.mostrarMjeError('El usuario no esta correctamente identificado');
               } else {
                     //grabamos los datos del user en el ls
                     localStorage.setItem('identity', JSON.stringify(this.identity));

@@ -1,0 +1,565 @@
+{
+	"info": {
+		"_postman_id": "4da1801c-e92d-40ef-a232-6a9ada01dae1",
+		"name": "BuyersHub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Producto: Obtener todos los productos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Lalo",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "test7@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "6546464",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "ADMIN_ROLE",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "google",
+							"value": "true",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products/getProductos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						"getProductos"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Yamil",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Listado de todos los usurios"
+			},
+			"response": []
+		},
+		{
+			"name": "Producto: Guardar Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Producto1",
+							"type": "text"
+						},
+						{
+							"key": "categoria",
+							"value": "Tecnologia",
+							"type": "text"
+						},
+						{
+							"key": "descripcion",
+							"value": "Descripcion producto",
+							"type": "text"
+						},
+						{
+							"key": "imagen",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "estaSuscripto",
+							"value": "false",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products/saveProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						"saveProduct"
+					]
+				},
+				"description": "Guardar"
+			},
+			"response": []
+		},
+		{
+			"name": "Producto: Obtener por id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Lalo",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "test7@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "6546464",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "ADMIN_ROLE",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "google",
+							"value": "true",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products/getProductById/5dbe13afdae6131da0c6b258",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						"getProductById",
+						"5dbe13afdae6131da0c6b258"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Yamil",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Obtener por id"
+			},
+			"response": []
+		},
+		{
+			"name": "Producto: Modificar producto",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Producto1 UPDATE",
+							"type": "text"
+						},
+						{
+							"key": "categoria",
+							"value": "tecnologia UPDATE",
+							"type": "text"
+						},
+						{
+							"key": "descripcion",
+							"value": "Descripcion producto UPDATE",
+							"type": "text"
+						},
+						{
+							"key": "imagen",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "estaSuscripto",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products/updateProduct/5dbe13afdae6131da0c6b258",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						"updateProduct",
+						"5dbe13afdae6131da0c6b258"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Yamil",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Modificar producto"
+			},
+			"response": []
+		},
+		{
+			"name": "Producto: Borrar Producto",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Lalo",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "test7@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "6546464",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "ADMIN_ROLE",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "google",
+							"value": "true",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products/deleteProduct/5dba42c9a19fb11179353cde",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						"deleteProduct",
+						"5dba42c9a19fb11179353cde"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Yamil",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Borrar producto"
+			},
+			"response": []
+		},
+		{
+			"name": "Users:  Guardar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "nombre",
+							"value": "Name User 1",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "Last name User 1",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "emailuser@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "rol",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "imagen",
+							"value": "1",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/save-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"save-user"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Yamil",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Guardar users"
+			},
+			"response": []
+		},
+		{
+			"name": "Users:  Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "nombre",
+							"value": "Name User 2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "apellido",
+							"value": "Last name User 2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "emailuser@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "imagen",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "gethash",
+							"value": "true",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"login"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Yamil",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Login usuario"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

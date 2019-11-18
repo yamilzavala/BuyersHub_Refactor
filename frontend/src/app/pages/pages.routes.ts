@@ -41,7 +41,7 @@ const pagesRoutes: Routes = [
             { path: 'envios', component: EnviosComponent, data: { titulo: 'Envios' } },
             { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },            
            // { path: 'account-settings', component: AccoutSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
-            { path: '', redirectTo: '/home', pathMatch: 'full' }
+            { path: '', redirectTo: '/login', pathMatch: 'full' }
         ]
     }
 ];

@@ -11,6 +11,7 @@ export class UserService {
   public url: string;
   public identity;
   public token;
+  
 
   constructor( private _http: HttpClient ) {
     this.url = URL_SERVICIOS;
@@ -30,6 +31,16 @@ export class UserService {
                     //   map((res:any) =>  res.json())
                     // );
    }
+
+   register(user_to_register){
+    let userJson = JSON.stringify(user_to_register);
+    let headersUser = new HttpHeaders({'Content-Type':'application/json'});
+
+    return this._http.post(this.url+'/api/users/save-user', userJson, {headers: headersUser});
+                   // .pipe(
+                   //   map((res:any) =>  res.json())
+                   // );
+  }
 
 
    getIdenity(){
@@ -51,4 +62,7 @@ export class UserService {
     }
     return this.token;
   }
+
+
+
 }
