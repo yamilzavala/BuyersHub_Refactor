@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
                                                 console.log(this.identity);
                                                 console.log(this.token);
                                                 localStorage.setItem('token', this.token);
+                                                this.usuario = new UsuarioModel('','','','','','');
                                               }    
                                               
                                               this.validarToken();

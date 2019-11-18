@@ -15,8 +15,7 @@ export class SidebarComponent implements OnInit {
                public router: Router ) { }
 
   ngOnInit() {
-    this._sidebar.inicializarMenuPorRol();    
-    
+    this._sidebar.inicializarMenuPorRol();        
   }
 
   cerrarSesion(){

@@ -16,6 +16,7 @@ import { DetalleProductoComponent } from './productos/detalle-producto/detalle-p
 import { AddProductComponent } from './productos/add-product/add-product.component';
 import { EditProductComponent } from './productos/edit-product/edit-product.component';
 import { EnviosComponent } from './envios/envios.component';
+import { UserEditComponent } from './usuarios/user-edit/user-edit.component';
 
 
 
@@ -36,7 +37,8 @@ const pagesRoutes: Routes = [
             { path: 'editarProducto/:id', component: EditProductComponent, data: { titulo: 'Editar Producto' } },
             { path: 'detalleProducto/:id', component: DetalleProductoComponent, data: { titulo: 'Detalle Producto' } },
             // { path: 'detalleProducto', component: DetalleProductoComponent, data: { titulo: 'Detalle Producto' } },
-            { path: 'perfil', component: PerfilComponent, data: { titulo: 'Perfil' } },
+            // { path: 'perfil', component: PerfilComponent, data: { titulo: 'Perfil' } },
+            { path: 'perfil', component: UserEditComponent, data: { titulo: 'Perfil' } },
             { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Busqueda' } },
             { path: 'envios', component: EnviosComponent, data: { titulo: 'Envios' } },
             { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },            

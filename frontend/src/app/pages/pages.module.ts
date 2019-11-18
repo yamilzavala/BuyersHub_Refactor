@@ -35,6 +35,7 @@ import { ModalComponent } from './modal/modal.component';
 import { AddProductComponent } from './productos/add-product/add-product.component';
 import { EditProductComponent } from './productos/edit-product/edit-product.component';
 import { EnviosComponent } from './envios/envios.component';
+import { UserEditComponent } from './usuarios/user-edit/user-edit.component';
 
 
 
@@ -58,7 +59,8 @@ import { EnviosComponent } from './envios/envios.component';
         ModalComponent,
         AddProductComponent,
         EditProductComponent,
-        EnviosComponent
+        EnviosComponent,
+        UserEditComponent
     ],
     exports: [
         HomeComponent
