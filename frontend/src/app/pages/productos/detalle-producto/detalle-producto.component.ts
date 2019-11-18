@@ -123,19 +123,19 @@ export class DetalleProductoComponent implements OnInit {
 
 
 Swal.fire({
-  title: 'Estas seguro?',
-  text: "Se suscribira al producto seleccionado!",
+  title: 'Esta seguro?',
+  text: this.mensaje,
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, Suscribirme!',
+  confirmButtonText: 'Si, Confirmar!',
   cancelButtonText: 'No, Cancelar'
 }).then((result) => {
   if (result.value) {
     Swal.fire(
-      'Suscripto!',
-      'Su suscripcion se ha realizado correctamente',
+      'Atencion!',
+      'Accion realizadada correctamente',
       'success'
     )
     this.confirmar();
@@ -160,8 +160,7 @@ Swal.fire({
 
     // this.mostrarMjeGlobal = true;
     if (!this.estaSuscripto) {
-      Swal.fire({
-        position: 'top-end',
+      Swal.fire({        
         icon: 'success',
         title: 'Suscripcion exitosa',
         showConfirmButton: false,
@@ -173,7 +172,6 @@ Swal.fire({
     if (this.estaSuscripto) {
       if (!this.estaSuscripto) {
         Swal.fire({
-          position: 'top-end',
           icon: 'success',
           title: 'Desuscripcion exitosa',
           showConfirmButton: false,
